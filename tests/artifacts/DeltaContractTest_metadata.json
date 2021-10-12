@@ -1,0 +1,175 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "CreateTaskShouldBeSuccessful",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "StartRoundTests",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "beforeAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "checkTaskJoinRoundTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "createTaskJoinRoundTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "joinRoundTests",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "selectCandidatesTests",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startAggregateTests",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uploadSeedCommitmentShouldSuccess",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uploadSkMaskCommitmentShouldSuccess",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uploadWeightCommitmentShouldSuccess",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uploadWeightCommitmentShouldTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uploadWeightCommitmentTests",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "waitForABlock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "waitForABlockToCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/DeltaContract_test.sol": "DeltaContractTest"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DeltaContract.sol": {
+			"keccak256": "0xafcaa5cc41bb8b27f36f38add493b473327d8dd66c8342ac62e4c5e64a8de581",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5fccf957d486319a6713f08bdd341ff69bfe458e03f6384d9c77db8bc25f10be",
+				"dweb:/ipfs/QmTMULpwEsUpJAGS8GJJq1YZNhVULTGPWmhq7iWY2n2Kxb"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/DeltaContract_test.sol": {
+			"keccak256": "0x6921b0bcd4c2606b2deca3b2345f9804f632b39e6076f71d99b48aac113eb389",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://3f34c8d85306e3c78e2035679dde0ee6ab45f70446a8b9bfbea4236613655ec0",
+				"dweb:/ipfs/QmeY8EeBFXgXhyJZKxx5MDASkyECGXpe22jSheDkiQiX19"
+			]
+		},
+		"tests/lib/Test_Participant.sol": {
+			"keccak256": "0x6ce81690925b12f235239467c6daef5ab39ff6d633f45853f91c9f140c2a1512",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://944d3b5fdf0cdca3ddf3b2f95c78af96374e04319a5eafd82552dd5feaf30e04",
+				"dweb:/ipfs/QmPyTk436LGST9M5F6N83SRsvw4EzMgnn9g1xQ4ggs7cfE"
+			]
+		}
+	},
+	"version": 1
+}

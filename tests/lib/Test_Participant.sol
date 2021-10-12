@@ -27,6 +27,12 @@ contract Participant {
     function uploadWeightCommitment(bytes32 taskId,uint64 round,bytes calldata weightCommitment) public {
         theContract.uploadWeightCommitment(taskId,round,weightCommitment);
     }
+    function uploadSeedCommitment(bytes32 taskId,uint64 round,bytes calldata weightCommitment) public {
+        theContract.uploadSeedCommitment(taskId,round,weightCommitment);
+    }
+    function uploadSkMaskCommitment(bytes32 taskId,uint64 round,bytes calldata weightCommitment) public {
+        theContract.uploadSkMaskCommitment(taskId,round,weightCommitment);
+    }
     function getCommitment(bytes32 taskId,address clientaddress,uint64 round) public view returns(DeltaContract.CommitmentData memory commitment) {
         commitment =  theContract.getCommitment(taskId,clientaddress,round);
     }

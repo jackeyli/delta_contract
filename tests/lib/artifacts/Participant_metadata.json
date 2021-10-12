@@ -1,0 +1,335 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract DeltaContract",
+						"name": "ct",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "dataSet",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "tskCmmtmnt",
+						"type": "bytes32"
+					}
+				],
+				"name": "createTask",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "clientaddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					}
+				],
+				"name": "getCommitment",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "weightCommitment",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "seedCmmtmnt",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "secretKeyMaskCmmtmnt",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct DeltaContract.CommitmentData",
+						"name": "commitment",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "pk1",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "pk2",
+						"type": "bytes32"
+					}
+				],
+				"name": "joinRound",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nop",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address[]",
+						"name": "cltaddrs",
+						"type": "address[]"
+					}
+				],
+				"name": "selectCandidates",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address[]",
+						"name": "onlineClients",
+						"type": "address[]"
+					}
+				],
+				"name": "startAggregate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint32",
+						"name": "maxSample",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "minSample",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "joinTimeout",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "computTimeout",
+						"type": "uint32"
+					}
+				],
+				"name": "startRound",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "weightCommitment",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadSeedCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "weightCommitment",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadSkMaskCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "weightCommitment",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadWeightCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/lib/Test_Participant.sol": "Participant"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DeltaContract.sol": {
+			"keccak256": "0xafcaa5cc41bb8b27f36f38add493b473327d8dd66c8342ac62e4c5e64a8de581",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://5fccf957d486319a6713f08bdd341ff69bfe458e03f6384d9c77db8bc25f10be",
+				"dweb:/ipfs/QmTMULpwEsUpJAGS8GJJq1YZNhVULTGPWmhq7iWY2n2Kxb"
+			]
+		},
+		"tests/lib/Test_Participant.sol": {
+			"keccak256": "0x6ce81690925b12f235239467c6daef5ab39ff6d633f45853f91c9f140c2a1512",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://944d3b5fdf0cdca3ddf3b2f95c78af96374e04319a5eafd82552dd5feaf30e04",
+				"dweb:/ipfs/QmPyTk436LGST9M5F6N83SRsvw4EzMgnn9g1xQ4ggs7cfE"
+			]
+		}
+	},
+	"version": 1
+}

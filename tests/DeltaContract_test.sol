@@ -167,18 +167,63 @@ contract DeltaContractTest {
             Assert.equal(error,"upload deadline has passed","uploadWeightCommitmentShouldTimeout failed");
         }
     }
-    
     function uploadWeightCommitmentShouldSuccess() public {
-        bytes32 t_id = taskDeveloper.createTask("myDataSet",0xa83da95c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e09);
-        taskDeveloper.startRound(t_id,1,3000,300,32,1);
+        bytes32 t_id = taskDeveloper.createTask("myDataSet",0x683da95c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e09);
+        taskDeveloper.startRound(t_id,1,3000,300,32,32);
         clientA.joinRound(t_id,1,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e01,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e02);
         address[] memory lst = new address[](1);
         lst[0] = address(clientA);
         taskDeveloper.selectCandidates(t_id,1,lst);
-        // bytes memory theBytes = new bytes(1);
-        // theBytes[0] = 0x01;
-        // clientA.uploadWeightCommitment(weightCommitmentTaskId,1,theBytes);
-        // DeltaContract.CommitmentData memory cmmt =  taskDeveloper.getCommitment(t_id,address(clientA),1);
-        // Assert.equal(cmmt.weightCommitment.length,1,"uploadWeightCommitmentShouldSuccess Failed");
+        bytes memory theBytes = new bytes(1);
+        theBytes[0] = 0x01;
+        clientA.uploadWeightCommitment(t_id,1,theBytes);
+        DeltaContract.CommitmentData memory cmmt =  taskDeveloper.getCommitment(t_id,address(clientA),1);
+        bytes memory cmmtData = cmmt.weightCommitment;
+        uint8 v;
+        assembly {
+            v := byte(0,mload(add(cmmtData,32)))
+        }
+        Assert.equal(cmmt.weightCommitment.length,1,"uploadWeightCommitmentShouldSuccess Failed");
+        Assert.equal(v,0x01,"uploadWeightCommitmentShouldSuccess Failed");
+    }
+    
+    function uploadSeedCommitmentShouldSuccess() public {
+        bytes32 t_id = taskDeveloper.createTask("myDataSet",0x183da95c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e09);
+        taskDeveloper.startRound(t_id,1,3000,300,32,32);
+        clientA.joinRound(t_id,1,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e01,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e02);
+        address[] memory lst = new address[](1);
+        lst[0] = address(clientA);
+        taskDeveloper.selectCandidates(t_id,1,lst);
+        bytes memory theBytes = new bytes(1);
+        theBytes[0] = 0x01;
+        clientA.uploadSeedCommitment(t_id,1,theBytes);
+        DeltaContract.CommitmentData memory cmmt =  taskDeveloper.getCommitment(t_id,address(clientA),1);
+        bytes memory cmmtData = cmmt.seedCmmtmnt;
+        uint8 v;
+        assembly {
+            v := byte(0,mload(add(cmmtData,32)))
+        }
+        Assert.equal(cmmt.seedCmmtmnt.length,1,"uploadWeightCommitmentShouldSuccess Failed");
+        Assert.equal(v,0x01,"uploadWeightCommitmentShouldSuccess Failed");
+    }
+    
+    function uploadSkMaskCommitmentShouldSuccess() public {
+        bytes32 t_id = taskDeveloper.createTask("myDataSet",0x183da95c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e09);
+        taskDeveloper.startRound(t_id,1,3000,300,32,32);
+        clientA.joinRound(t_id,1,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e01,0xe83da96c058c118d61c20dba7a15f44fa0a4c079eff4ca94932f2baf31135e02);
+        address[] memory lst = new address[](1);
+        lst[0] = address(clientA);
+        taskDeveloper.selectCandidates(t_id,1,lst);
+        bytes memory theBytes = new bytes(1);
+        theBytes[0] = 0x01;
+        clientA.uploadSkMaskCommitment(t_id,1,theBytes);
+        DeltaContract.CommitmentData memory cmmt =  taskDeveloper.getCommitment(t_id,address(clientA),1);
+        bytes memory cmmtData = cmmt.secretKeyMaskCmmtmnt;
+        uint8 v;
+        assembly {
+            v := byte(0,mload(add(cmmtData,32)))
+        }
+        Assert.equal(cmmt.secretKeyMaskCmmtmnt.length,1,"uploadWeightCommitmentShouldSuccess Failed");
+        Assert.equal(v,0x01,"uploadWeightCommitmentShouldSuccess Failed");
     }
 }
