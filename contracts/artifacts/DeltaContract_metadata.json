@@ -510,19 +510,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "testAssembly",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "ret",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "bytes32",
@@ -735,11 +722,11 @@
 	},
 	"sources": {
 		"contracts/DeltaContract.sol": {
-			"keccak256": "0xafcaa5cc41bb8b27f36f38add493b473327d8dd66c8342ac62e4c5e64a8de581",
+			"keccak256": "0xc5dc227602659c6f2489c5981fc57cb537ad93e92916a325c3cbeb08a83a4df2",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://5fccf957d486319a6713f08bdd341ff69bfe458e03f6384d9c77db8bc25f10be",
-				"dweb:/ipfs/QmTMULpwEsUpJAGS8GJJq1YZNhVULTGPWmhq7iWY2n2Kxb"
+				"bzz-raw://d6610285f96a8ac3c90ec9b8f07d9ccf858e48027d3c20949fccc0f94b830a27",
+				"dweb:/ipfs/QmNx3rM3jT4w7mjioqEv4wutDkWMsanRXeWTtWMuQ2HTMX"
 			]
 		}
 	},

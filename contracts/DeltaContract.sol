@@ -256,12 +256,8 @@ contract DeltaContract {
         TaskRound storage curRound = taskRounds[taskId][round];
         require(curRound.status == RoundStatus.Running,"This round is not running now");
         require(curRound.calcStartBlockNum + curRound.computTimeout >= block.number,"upload deadline has passed");
-        RoundModelCommitments[] storage cmmts = roundModelCommitments[taskId];
-        if (cmmts.length == round) {
-            cmmts.push();
-        }
-        RoundModelCommitments storage cmmt = cmmts[round];
-        cmmt.data[msg.sender].weightCommitment = weightCommitment;
+        RoundModelCommitments storage commitments = roundModelCommitments[taskId][round];
+        commitments.data[msg.sender].weightCommitment = weightCommitment;
     }
     /**
      * @dev called by client, upload secret sharing seed commitment
@@ -271,12 +267,8 @@ contract DeltaContract {
      */
     function uploadSeedCommitment(bytes32 taskId,uint64 round,bytes calldata seedCmmtmnt) roundExists(taskId,round) public {
         require(seedCmmtmnt.length <= 256);
-        RoundModelCommitments[] storage cmmts = roundModelCommitments[taskId];
-        if (cmmts.length == round) {
-            cmmts.push();
-        }
-        RoundModelCommitments storage cmmt = cmmts[round];
-        cmmt.data[msg.sender].seedCmmtmnt = seedCmmtmnt;
+        RoundModelCommitments storage cmmts = roundModelCommitments[taskId][round];
+        cmmts.data[msg.sender].seedCmmtmnt = seedCmmtmnt;
     }
     
     /**
@@ -287,18 +279,10 @@ contract DeltaContract {
      */
     function uploadSkMaskCommitment(bytes32 taskId,uint64 round,bytes calldata secretKeyMaskCmmtmnt) roundExists(taskId,round) public {
         require(secretKeyMaskCmmtmnt.length <= 256);
-        RoundModelCommitments[] storage cmmts = roundModelCommitments[taskId];
-        if (cmmts.length == round) {
-            cmmts.push();
-        }
-        RoundModelCommitments storage cmmt = cmmts[round];
-        cmmt.data[msg.sender].secretKeyMaskCmmtmnt = secretKeyMaskCmmtmnt;
+        RoundModelCommitments storage cmmts = roundModelCommitments[taskId][round];
+        cmmts.data[msg.sender].secretKeyMaskCmmtmnt = secretKeyMaskCmmtmnt;
     }
     
-    function testAssembly() view public returns(uint256 ret){
-         bytes memory theBytes = new bytes(1);
-         ret = theBytes.length;
-    }
     
     /**
      * @dev Change owner
