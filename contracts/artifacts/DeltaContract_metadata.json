@@ -1,0 +1,734 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "onlineClients",
+						"type": "address[]"
+					}
+				],
+				"name": "AggregatingStarted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "addrs",
+						"type": "address[]"
+					}
+				],
+				"name": "PartnerSelected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					}
+				],
+				"name": "RoundStart",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "dataSet",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "taskCommitment",
+						"type": "bytes32"
+					}
+				],
+				"name": "TaskCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "changeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "dataSet",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "commitment",
+						"type": "bytes32"
+					}
+				],
+				"name": "createTask",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					}
+				],
+				"name": "endRound",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address",
+						"name": "candidateAddr",
+						"type": "address"
+					}
+				],
+				"name": "getCandidatePks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "pk1",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "pk2",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct DeltaContract.Candidate",
+						"name": "candidate",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "clientaddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					}
+				],
+				"name": "getCommitment",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes",
+								"name": "weightCommitment",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "seedCmmtmnt",
+								"type": "bytes"
+							},
+							{
+								"internalType": "bytes",
+								"name": "secretKeyMaskCmmtmnt",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct DeltaContract.CommitmentData",
+						"name": "commitment",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					}
+				],
+				"name": "getTaskData",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "dataSet",
+								"type": "string"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "commitment",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint64",
+								"name": "currentRound",
+								"type": "uint64"
+							}
+						],
+						"internalType": "struct DeltaContract.Task",
+						"name": "task",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					}
+				],
+				"name": "getTaskRound",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint64",
+								"name": "currentRound",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint32",
+								"name": "maxSample",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "minSample",
+								"type": "uint32"
+							},
+							{
+								"internalType": "enum DeltaContract.RoundStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "roundStartBlockNum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "calcStartBlockNum",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint32",
+								"name": "joinTimeout",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "computTimeout",
+								"type": "uint32"
+							}
+						],
+						"internalType": "struct DeltaContract.ExtCallTaskRoundStruct",
+						"name": "taskround",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "pk1",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "pk2",
+						"type": "bytes32"
+					}
+				],
+				"name": "joinRound",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address[]",
+						"name": "cltaddrs",
+						"type": "address[]"
+					}
+				],
+				"name": "selectCandidates",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "address[]",
+						"name": "onlineClients",
+						"type": "address[]"
+					}
+				],
+				"name": "startAggregate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint32",
+						"name": "maxSample",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "minSample",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "joinTimeout",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "computTimeout",
+						"type": "uint32"
+					}
+				],
+				"name": "startRound",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "seedCmmtmnt",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadSeedCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "secretKeyMaskCmmtmnt",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadSkMaskCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "taskId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint64",
+						"name": "round",
+						"type": "uint64"
+					},
+					{
+						"internalType": "bytes",
+						"name": "weightCommitment",
+						"type": "bytes"
+					}
+				],
+				"name": "uploadWeightCommitment",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Set & change owner",
+			"kind": "dev",
+			"methods": {
+				"changeOwner(address)": {
+					"details": "Change owner",
+					"params": {
+						"newOwner": "address of new owner"
+					}
+				},
+				"constructor": {
+					"details": "Set contract deployer as owner"
+				},
+				"createTask(string,bytes32)": {
+					"details": "called by task developer, notifying all clients that a new learning task has been published ",
+					"params": {
+						"commitment": "training code hash (client validation purpose)",
+						"dataSet": "data set name (file/folder name of training data)"
+					},
+					"returns": {
+						"taskId": "taskId"
+					}
+				},
+				"endRound(bytes32,uint64)": {
+					"details": "called by task developer, close round",
+					"params": {
+						"round": "the task round",
+						"taskId": "taskId"
+					}
+				},
+				"getCommitment(bytes32,address,uint64)": {
+					"details": "called by task developer, get commitments from blockchain(Server has to call this method for every clients to get their commiments as the return value couldn't contain mapping type in solidity(damn it))",
+					"params": {
+						"clientaddress": "the client that publish the commitments  ",
+						"round": "the round of that commitment",
+						"taskId": "taskId"
+					},
+					"returns": {
+						"commitment": "commitment data"
+					}
+				},
+				"getOwner()": {
+					"details": "Return owner address ",
+					"returns": {
+						"_0": "address of owner"
+					}
+				},
+				"getTaskData(bytes32)": {
+					"details": "get task info data",
+					"params": {
+						"taskId": "taskId"
+					}
+				},
+				"getTaskRound(bytes32,uint64)": {
+					"details": "getting task round infos, this function is called for multiple purposes：one is for task developer to fetch registed clients after round start and another is for  clients to get pks ",
+					"params": {
+						"round": "the round to fetch",
+						"taskId": "taskId"
+					},
+					"returns": {
+						"taskround": "the task round infos"
+					}
+				},
+				"joinRound(bytes32,uint64,bytes32,bytes32)": {
+					"details": "called by client, join for that round of computation",
+					"params": {
+						"pk1": "used for secure communication channel establishment",
+						"pk2": "used for mask generation",
+						"round": "the round to join",
+						"taskId": "taskId"
+					}
+				},
+				"selectCandidates(bytes32,uint64,address[])": {
+					"details": "called by task developer, randomly choose candidates to be computation nodes",
+					"params": {
+						"cltaddrs": "selected client addresses"
+					}
+				},
+				"startAggregate(bytes32,uint64,address[])": {
+					"details": "called by task developer, notifying all participants for aggregating",
+					"params": {
+						"round": "the task round",
+						"taskId": "taskId"
+					}
+				},
+				"startRound(bytes32,uint64,uint32,uint32,uint32,uint32)": {
+					"details": "called by task developer, notifying all clients that a new computing round is started and open for joining",
+					"params": {
+						"round": "the round to start",
+						"taskId": "taskId"
+					}
+				},
+				"uploadSeedCommitment(bytes32,uint64,bytes)": {
+					"details": "called by client, upload secret sharing seed commitment",
+					"params": {
+						"round": "the task round",
+						"seedCmmtmnt": "secret sharing piece of seed mask",
+						"taskId": "taskId"
+					}
+				},
+				"uploadSkMaskCommitment(bytes32,uint64,bytes)": {
+					"details": "called by client, upload secret sharing secret key mask commitment",
+					"params": {
+						"round": "the task round",
+						"secretKeyMaskCmmtmnt": "secret sharing piece of secret key mask",
+						"taskId": "taskId"
+					}
+				},
+				"uploadWeightCommitment(bytes32,uint64,bytes)": {
+					"details": "called by client, upload weight commitment",
+					"params": {
+						"round": "the task round",
+						"taskId": "taskId",
+						"weightCommitment": "masked model incremental commitment"
+					}
+				}
+			},
+			"title": "Owner",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DeltaContract.sol": "DeltaContract"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/DeltaContract.sol": {
+			"keccak256": "0x16713d78ad7cca6db494f80b4310912d4791704e0a422ab3249ab8a5edb404b6",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://84c8e302a8f047fc339d4f501611395f9c06c0925efb9f9a7bb88a7f1f7e368e",
+				"dweb:/ipfs/QmTFBn7sBPXSfnPNyVfJAFQs8ziB4zcpMtHiRmSiaFDbjx"
+			]
+		}
+	},
+	"version": 1
+}
